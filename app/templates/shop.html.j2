@@ -1,0 +1,43 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+Shop
+{% endblock %}
+
+{% block content %}
+    <h1>Shop</h1>
+    <form method="POST" action="/shop">
+    <button type="submit" class="btn btn-primary">Open Shop</button>
+    </form>
+    <br>
+    {% if items %}
+        <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="row">Item Number</th>
+            <th scope="row">Name</th>
+            <th scope="row">Price</th>
+            <th scope="row">Description</th>
+            <th scope="row">category</th>
+            <th scope="row">Image</th>
+
+            </tr> 
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.item_name}}</td>
+                    <td>{{item.item_price}}</td>
+                    <td>{{item.item_des}}</td>      
+                    <td>{{item.item_category}}</td>
+                    <td>{{item.item_img}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+    Press the button to open the shop
+    {% endif %}
+
+
+{% endblock %}
